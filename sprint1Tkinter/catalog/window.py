@@ -1,24 +1,35 @@
+from tkinter import ttk, messagebox
 import tkinter as tk
-from tkinter import ttk, Button, Label
-import yes_window
-import no_window
+from cell import Cell
+from detail_window import DetailWindow
 
-class MainWindow:
-    def on_button1_click(self):
-        yes_window.open_window()
+class MainWindow():
 
-    def on_button2_click(self):
-        no_window.open_window()
+    def onButtonClicked(self, cell):
 
-    def __init__(self, root):
+        
+        detail_window = DetailWindow(self.root, cell.title, cell.imageTk, cell.description)  #Cuando haces click sale un mensaje
+
+
+    def _init_(self, root):
+        
+        
+        root.title("5 libros de Brandon Sanderson") #Título de la ventana
         self.root = root
-        self.label = Label(root, text="¿Has tenido un buen día?")
-        self.label.pack()
-        self.button1 = ttk.Button(root, text="Si", command=self.on_button1_click)
-        self.button2 = ttk.Button(root, text="No", command=self.on_button2_click)
-        self.button1.pack(side="left")
-        self.button2.pack(side="right")
 
-root = tk.Tk()
-app = MainWindow(root)
-root.mainloop()
+        
+        self.cells = [       #Celdas con el título y su ruta definidos
+
+            Cell("AC Brotherhood", "C:\\Users\\Megaport\\Downloads\\Python\\catalog\\data\\unedited\\acbrotherhood.jpg", "En el Renacimiento italiano, como miembro de la hermandad de asesinos, luchas por la libertad y la justicia en un contexto de conspiraciones y conflictos."),
+            Cell("Dishonored","C:\\Users\\Megaport\\Downloads\\Python\\catalog\\data\\unedited\\dishonored.jpg", "En una ciudad steampunk, encarnas a un vengador silencioso con habilidades sobrenaturales. Te deslizas entre las sombras en misiones de sigilo y retribución."),
+            Cell("Skyrim","C:\\Users\\Megaport\\Downloads\\Python\\catalog\\data\\unedited\\skyrim.jpg", "Un épico videojuego de rol que te sumerge en una fantasía nórdica, donde enfrentas dragones y forjas tu destino en un vasto mundo abierto."),
+            Cell("Diablo IV", "C:\\Users\\Megaport\\Downloads\\Python\\catalog\\data\\unedited\\diabloIV.jpg", "Adéntrate en un mundo desolado y devastado por demonios. En este juego de rol de acción, libras batallas épicas y desatas poderes arcanos en un conflicto eterno entre el bien y el mal."),
+            Cell("Rainbow Six Siege", "C:\\Users\\Megaport\\Downloads\\Python\\catalog\\data\\unedited\\rainbowsix.jpg", "Experimenta la emoción de operaciones tácticas en equipos. Enfréntate en asedios explosivos como un operativo especial, en un ambiente de competencia intensa.")
+
+        ]
+        
+        for i, cell in enumerate(self.cells): #Bucle para leer la lista
+
+            label = ttk.Label(root, image = cell.imageTk, text = cell.title, compound = tk.BOTTOM)
+            label.grid(row = 0,column = i)
+            label.bind("<Button-1>",lambda event, cell = cell: self.onButtonClicked(cell))
