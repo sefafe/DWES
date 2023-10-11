@@ -1,0 +1,27 @@
+[
+  {
+    "name":"AC Brotherhood",
+    "description":"En el Renacimiento italiano, como miembro de la hermandad de asesinos, luchas por la libertad y la justicia en un contexto de conspiraciones y conflictos.",
+    "image_url":"https://raw.githubusercontent.com/sefafe/DWES/main/sprint1Tkinter/catalog/data/edited/acbrotherhood_e.jpg"
+  },
+  {
+    "name":"Diablo IV",
+    "description":"Adéntrate en un mundo desolado y devastado por demonios. En este juego de rol de acción, libras batallas épicas y desatas poderes arcanos en un conflicto eterno entre el bien y el mal.",
+    "image_url":"https://raw.githubusercontent.com/sefafe/DWES/main/sprint1Tkinter/catalog/data/edited/diabloIV_e.jpg"
+  },
+  {
+    "name":"Dishonored",
+    "description":"En una ciudad steampunk, encarnas a un vengador silencioso con habilidades sobrenaturales. Te deslizas entre las sombras en misiones de sigilo y retribución.",
+    "image_url":"https://raw.githubusercontent.com/sefafe/DWES/main/sprint1Tkinter/catalog/data/edited/dishonored_e.jpg"
+  },
+  {
+    "name":"Rainbow Six Siege",
+    "description":"Experimenta la emoción de operaciones tácticas en equipos. Enfréntate en asedios explosivos como un operativo especial, en un ambiente de competencia intensa.",
+    "image_url":"https://raw.githubusercontent.com/sefafe/DWES/main/sprint1Tkinter/catalog/data/edited/rainbowsix_e.jpg"
+  },
+  {
+    "name":"Skyrim",
+    "description":"Un épico videojuego de rol que te sumerge en una fantasía nórdica, donde enfrentas dragones y forjas tu destino en un vasto mundo abierto.",
+    "image_url":"https://raw.githubusercontent.com/sefafe/DWES/main/sprint1Tkinter/catalog/data/edited/skyrim_e.jpg"
+  }
+]
