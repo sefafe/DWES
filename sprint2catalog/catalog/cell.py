@@ -1,13 +1,16 @@
-import tkinter as tk
 from PIL import Image, ImageTk
+import requests, threading
+from io import BytesIO
 
 class Cell:
 
-    def _init_(self, title, path, description):
-
+    def __init__(self, title, url, description):
         self.title = title
-        self.path = path
+        self.image_tk=threading.Thread(target=self.load_image_from_url(url)).start
         self.description = description
-        
-        resizedImage = (Image.open(self.path)).resize((100, 100), Image.Resampling.LANCZOS)
-        self.imageTk = ImageTk.PhotoImage(resizedImage)
+        self.description=description
+
+    def load_image_from_url(self,url):
+        response = requests.get(url)
+        img_data = Image.open(BytesIO(response.content))
+        self.image_tk = ImageTk.PhotoImage(img_data)

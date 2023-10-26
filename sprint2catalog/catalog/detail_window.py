@@ -3,7 +3,7 @@ from tkinter import ttk
 
 class DetailWindow:
 
-    def _init_(self, root, title, image, description):
+    def __init__(self, root, title, image, description):
 
         self.root = root
         self.title = title
