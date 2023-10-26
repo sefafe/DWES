@@ -18,3 +18,5 @@ class DetailWindow:
         title_label.pack()
         description_label = ttk.Label(self.window, text = self.description, wraplength = 300)
         description_label.pack()
+
+        

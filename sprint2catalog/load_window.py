@@ -3,6 +3,7 @@ import requests
 
 class LoadingWindow:
     def __init__(self, root, launch_main_window):
+        
         self.root = root
         self.root.title("Cargando...")
         self.root.geometry("170x120")
@@ -35,6 +36,14 @@ class LoadingWindow:
             return
 
         self.check_thread()
+
+        loading_width = 170
+        loading_height = 120
+        screen_width = root.winfo_screenwidth()
+        screen_height = root.winfo_screenheight()
+        x = (screen_width // 2) - (loading_width // 2)
+        y = (screen_height // 2) - (loading_height // 2)
+        self.root.geometry(f"{loading_width}x{loading_height}+{x}+{y}")
 
     def draw_progress_circle(self, progress):
         self.canvas.delete("progress")

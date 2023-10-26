@@ -2,6 +2,7 @@ import tkinter as tk
 
 class MainWindow:
     def __init__(self, root, json_data):
+        
         self.root = root
         self.json_data = json_data
         self.root.title("Videojuegos")
@@ -17,6 +18,14 @@ class MainWindow:
         self.load_games()
 
         self.game_list.bind("<<ListboxSelect>>", self.show_details)
+
+        window_width = 800
+        window_height = 600
+        screen_width = root.winfo_screenwidth()
+        screen_height = root.winfo_screenheight()
+        x = (screen_width // 2) - (window_width // 2)
+        y = (screen_height // 2) - (window_height // 2)
+        self.root.geometry(f"{window_width}x{window_height}+{x}+{y}")
 
     def load_games(self):
         for game in self.json_data:
