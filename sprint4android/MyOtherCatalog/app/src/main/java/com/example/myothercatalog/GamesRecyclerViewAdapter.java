@@ -1,9 +1,12 @@
 package com.example.myothercatalog;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,10 +27,21 @@ public class GamesRecyclerViewAdapter extends RecyclerView.Adapter<GamesViewHold
         return new GamesViewHolder(view);
     }
 
-    public void onBindViewHolder (GamesViewHolder holder, int position){
-        GamesData dataInPositionToBeRendered= allData.get(position);
-        holder.showData(dataInPositionToBeRendered,activity);
+    public void onBindViewHolder (GamesViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        GamesData dataInPositionToBeRendered = allData.get(position);
+        holder.showData(dataInPositionToBeRendered, activity);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(activity,DetailActivity.class);
+                activity.startActivity(intent);
+            }
+
+        });
     }
+
+
 
     public int getItemCount(){
         return allData.size();

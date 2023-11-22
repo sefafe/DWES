@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    
+
     <ImageView
         android:id="@+id/game_image_view"
         android:layout_width="100dp"
@@ -12,10 +12,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
         />
-    
+
     <TextView
         android:id="@+id/game_name_text_view"
         android:layout_width="wrap_content"
@@ -26,4 +24,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="10dp"
         />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
