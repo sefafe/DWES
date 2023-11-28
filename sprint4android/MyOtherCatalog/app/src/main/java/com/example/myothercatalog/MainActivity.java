@@ -6,9 +6,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -26,47 +30,55 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    // ...
+    RecyclerView recyclerView;
+    GamesRecyclerViewAdapter adapter;
+    List<GamesData> allGames;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        RecyclerView recyclerView= findViewById(R.id.recycler_view);
 
-        Activity activity= this;
+        // ...
 
+        allGames = new ArrayList<>();
+        recyclerView = findViewById(R.id.recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new GamesRecyclerViewAdapter(allGames,this);
+        recyclerView.setAdapter(adapter);
 
+        // ...
 
-        JsonArrayRequest request=new JsonArrayRequest(
+        JsonArrayRequest request = new JsonArrayRequest(
                 Request.Method.GET,
                 "https://raw.githubusercontent.com/sefafe/DWES/main/recursos/catalog.json",
                 null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        List<GamesData> allRobots= new ArrayList<>();
-                        for (int i=0;i< response.length();i++){
+                        for (int i = 0; i < response.length(); i++) {
                             try {
                                 JSONObject robot = response.getJSONObject(i);
-                                GamesData data= new GamesData(robot);
-                                allRobots.add(data);
-                            }catch (JSONException e){
+                                GamesData data = new GamesData(robot);
+                                allGames.add(data);
+                            } catch (JSONException e) {
                                 e.printStackTrace();
                             }
                         }
-                        GamesRecyclerViewAdapter adapter= new GamesRecyclerViewAdapter(allRobots,activity);
-                        recyclerView.setAdapter(adapter);
-                        recyclerView.setLayoutManager(new LinearLayoutManager(activity));
+                        adapter.notifyDataSetChanged();
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(activity, error.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
 
-        RequestQueue cola= Volley.newRequestQueue(this);
+        RequestQueue cola = Volley.newRequestQueue(this);
         cola.add(request);
     }
+
+    // ...
 }

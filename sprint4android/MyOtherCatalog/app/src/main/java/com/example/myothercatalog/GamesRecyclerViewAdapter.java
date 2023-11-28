@@ -27,19 +27,20 @@ public class GamesRecyclerViewAdapter extends RecyclerView.Adapter<GamesViewHold
         return new GamesViewHolder(view);
     }
 
-    public void onBindViewHolder (GamesViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        GamesData dataInPositionToBeRendered = allData.get(position);
+    public void onBindViewHolder (GamesViewHolder holder, @SuppressLint("RecyclerView") final int position) {
+        final GamesData dataInPositionToBeRendered = allData.get(position);
         holder.showData(dataInPositionToBeRendered, activity);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(activity,DetailActivity.class);
+                Intent intent = new Intent(activity, DetailActivity.class);
+                intent.putExtra("data", dataInPositionToBeRendered);
                 activity.startActivity(intent);
             }
-
         });
     }
+
 
 
 
