@@ -8,5 +8,10 @@
         <item name="android:fontFamily">sans-serif-black</item>
     </style>
 
+    <style name="TextTheme" parent="android:TextAppearance">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:fontFamily">sans-serif-regular</item>
+    </style>
+
     <style name="Theme.MyOtherCatalog" parent="Base.Theme.MyOtherCatalog" />
 </resources>
